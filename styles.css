@@ -1,0 +1,36 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+#container{
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+#login-container{
+  display: flex;
+  width: 600px;
+  border: 1px solid #686868;
+  flex-direction: column;
+  padding: 16px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+#login-container input + input,
+#login-container input + button {
+  margin-top: 16px;
+
+}
+
+#login-container button{
+  background-color: rgb(50, 113, 207);
+  color: #fff;
+  border: 1px solid rgb(28, 62, 114);
+  border-radius: 8px;
+  width: 80px;
+  margin: 0 auto;
+}
