@@ -4,6 +4,9 @@ $users = [
 	["id" => 1, "name" => "Gustavo", "age" => 35],
 	["id" => 2, "name" => "Lara", "age" => 6],
 	["id" => 3, "name" => "Baby", "age" => 82],
+	["id" => 3, "name" => "Baby", "age" => 82],
+	["id" => 3, "name" => "Baby", "age" => 82],
+	["id" => 3, "name" => "Baby", "age" => 82],
 ];
 ?>
 
@@ -19,15 +22,15 @@ $users = [
 		<tr>
 			<th>Id</th>
 			<th>Nome</th>
-			<th>Idade</th>
+			<th>login</th>
 		</tr>
 
 		<?php
 			foreach ($users as $user) { ?>
 				<tr>
-					<td><?php echo $user["id"]; ?> </td>
-					<td><?php echo $user["name"]; ?></td>
-					<td><?php echo $user["age"]; ?></td>
+					<td><?php echo $user["cduser"]; ?> </td>
+					<td><?php echo $user["nmuser"]; ?></td>
+					<td><?php echo $user["idlogin"]; ?></td>
 				</tr>
 			<?php }
 		?>

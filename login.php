@@ -1,6 +1,11 @@
+<?php
+session_start();
+require_once "./Conector.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,12 +32,27 @@
 
   <?php
   } else {
-  ?>
-    <div id="container">
-      <div id="login-container">
-        <h1>Olá, <?= $_POST["login"]?></h1>
+    $user=$conector->execute("select * from adusers where idlogin = :idlogin",["idlogin"=> $_POST["login"]]);
+
+    if(empty($user) || !password_verify($_POST["password"], $user['pslogin'])){
+      ?>
+
+      <div id="container">
+        <div id="login-container">
+          <h1>Deu ruim</h1>
+        </div>
       </div>
-    </div>
+      <?php
+    } else {
+      $_SESSION["user"]=$user;
+      ?>
+     <script>
+      window.location.href="/users.php"
+     </script>
+      <?php 
+    }
+
+  ?>
 
   <?php
   }
