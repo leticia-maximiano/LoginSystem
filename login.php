@@ -1,8 +1,7 @@
-<?php
-session_start();
-require_once "./Conector.php";
-
+<?php 
+require_once "./global.php";
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,8 +31,9 @@ require_once "./Conector.php";
 
   <?php
   } else {
-    $user=$conector->execute("select * from adusers where idlogin = :idlogin",["idlogin"=> $_POST["login"]]);
+    $user=$conn->execute("select * from adusers where idlogin = :idlogin",["idlogin"=> $_POST["login"]])[0];
 
+    var_dump($user);
     if(empty($user) || !password_verify($_POST["password"], $user['pslogin'])){
       ?>
 
@@ -45,11 +45,7 @@ require_once "./Conector.php";
       <?php
     } else {
       $_SESSION["user"]=$user;
-      ?>
-     <script>
-      window.location.href="/users.php"
-     </script>
-      <?php 
+      $location->goToPage("index");
     }
 
   ?>

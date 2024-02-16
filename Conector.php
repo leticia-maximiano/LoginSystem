@@ -44,5 +44,3 @@ class Conector {
     return $statement->fetchAll(PDO::FETCH_ASSOC);
   }
 }
-
-$conector=new Conector();

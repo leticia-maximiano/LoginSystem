@@ -1,16 +1,12 @@
 <?php
-session_start();
-require_once "./Conector.php";
 
-if(!$_SESSION["user"]){
+require_once "./global.php";
 
-  echo "pintão não está certo";
-  return;
-}
+
 
 if(!empty($_POST) && $_POST["name"] && $_POST["password"] && $_POST["login"]){
 
-  $conector->execute(
+  $conn->execute(
     "INSERT INTO ADUSERS(NMUSER,IDLOGIN,PSLOGIN)
     VALUES(:nmuser,:idlogin,:pslogin)",
     ["nmuser"=>$_POST["name"],"idlogin"=>$_POST["login"],"pslogin"=>password_hash($_POST["password"],PASSWORD_BCRYPT)]
@@ -19,7 +15,7 @@ if(!empty($_POST) && $_POST["name"] && $_POST["password"] && $_POST["login"]){
 
 
 
-$users = $conector->execute("select * from adusers");
+$users = $conn->execute("select * from adusers");
 ?>
 
 <!DOCTYPE html>
